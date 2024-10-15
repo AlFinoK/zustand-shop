@@ -1,14 +1,8 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
-	content: [
-		'./src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-		'./src/components/**/*.{js,ts,jsx,tsx,mdx}',
-		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
-		'./src/widgets/**/*.{js,ts,jsx,tsx}',
-		'./src/shared/**/*.{js,ts,jsx,tsx}',
-		'./src/entities/**/*.{js,ts,jsx,tsx}',
-	],
+	content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
+
 	theme: {
 		extend: {
 			colors: {
@@ -17,6 +11,7 @@ const config: Config = {
 			},
 		},
 	},
+	mode: 'jit',
 	plugins: [],
 }
 export default config

@@ -1,5 +1,7 @@
-import { DeleteOutlined, ShoppingCartOutlined } from '@ant-design/icons'
+'use client'
+
 import { Button } from 'antd'
+import { DeleteOutlined, ShoppingCartOutlined } from '@ant-design/icons'
 
 import { useCartStore } from '../core'
 import { useCartTotal } from '../hooks/useCartTotal'
@@ -16,7 +18,7 @@ export const Cart = ({ model }: CartProps) => {
 		return (
 			<div className={'flex justify-center pt-5'}>
 				<ShoppingCartOutlined style={{ fontSize: 24, position: 'relative' }} />
-				<span className={'absolute top-6 right-5 bg-gray-500 text-white rounded-full px-2 w-30 h-30'}>
+				<span className={'absolute top-6 right-5 bg-white text-blue-700 rounded-full px-2 w-30 h-30'}>
 					{cart.length}
 				</span>
 			</div>
@@ -80,7 +82,7 @@ type CartItemProps = {
 const CartItem = ({ title, price, quantity }: CartItemProps) => {
 	return (
 		<li className="flex justify-between items-center w-full">
-			<span className={'w-[250px] inline-block'}>
+			<span className={'w-[150px] inline-block'}>
 				{title} (x{quantity})
 			</span>
 			<span className={'text-green-400'}>${(price * quantity).toFixed(2)}</span>

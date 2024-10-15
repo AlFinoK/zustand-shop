@@ -6,7 +6,7 @@ import { apiURL, fetchProducts } from '@/shared/api/products'
 
 export const useProducts = () => {
 	const { setProducts } = useProductStore()
-	const { data, error } = useSWR(`${apiURL}products`, fetchProducts)
+	const { data, error, mutate } = useSWR(`${apiURL}products`, fetchProducts)
 
 	useEffect(() => {
 		if (data && Array.isArray(data) && data.length > 0) {
@@ -18,5 +18,6 @@ export const useProducts = () => {
 		products: Array.isArray(data) ? data : [],
 		error,
 		isLoading: !error && !data,
+		mutate,
 	}
 }

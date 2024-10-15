@@ -1,24 +1,23 @@
 import { Select } from 'antd'
 
-import { useFilterStore } from '@/entities/filters'
+import { useFilterStore } from '../core'
 
 export const PriceFilter = () => {
 	const { setPriceSort } = useFilterStore()
+
+	const handlePriceChange = (value: string | null) => {
+		setPriceSort(value as 'lowest' | 'highest')
+	}
 
 	return (
 		<Select
 			placeholder="Sort by price"
 			optionFilterProp="label"
-			onChange={(value) => setPriceSort(value)}
+			onChange={handlePriceChange}
 			options={[
-				{
-					value: 'lowest',
-					label: 'Lowest',
-				},
-				{
-					value: 'highest',
-					label: 'Highest',
-				},
+				{ value: null, label: 'All' },
+				{ value: 'lowest', label: 'Lowest' },
+				{ value: 'highest', label: 'Highest' },
 			]}
 		/>
 	)

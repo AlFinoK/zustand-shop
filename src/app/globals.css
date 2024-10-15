@@ -29,3 +29,20 @@ body {
 	background-color: #21d4fd;
 	background-image: linear-gradient(19deg, #21d4fd 0%, #521b6b 100%);
 }
+
+.error-message {
+	@apply text-red-600 text-4xl uppercase;
+}
+
+.shop-title {
+	@apply text-2xl md:text-4xl uppercase text-white;
+}
+
+.mobileSidebar {
+	flex: none !important;
+	min-width: 0 !important;
+	max-width: 100% !important;
+	height: 100vh !important;
+	position: fixed !important;
+	right: 0;
+}
