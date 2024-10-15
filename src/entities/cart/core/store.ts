@@ -4,7 +4,7 @@ import { persist } from 'zustand/middleware'
 import { Product } from '@/entities/product'
 
 export type CartState = {
-	cart: Product[]
+	cart: { product: Product; quantity: number }[]
 }
 
 type CartActions = {
@@ -16,16 +16,28 @@ type CartActions = {
 export const useCartStore = create<CartState & CartActions>()(
 	persist(
 		(set) => ({
-			cart: [],
+			cart: [] as { product: Product; quantity: number }[],
 
 			addToCart: (product: Product) =>
-				set((state) => ({
-					cart: [...state.cart, product],
-				})),
+				set((state) => {
+					const existingProduct = state.cart.find((item) => item.product.id === product.id)
+
+					if (existingProduct) {
+						return {
+							cart: state.cart.map((item) =>
+								item.product.id === product.id ? { ...item, quantity: item.quantity + 1 } : item,
+							),
+						}
+					} else {
+						return {
+							cart: [...state.cart, { product, quantity: 1 }],
+						}
+					}
+				}),
 
 			removeFromCart: (id: number) =>
 				set((state) => ({
-					cart: state.cart.filter((product) => product.id !== id),
+					cart: state.cart.filter((item) => item.product.id !== id),
 				})),
 
 			clearCart: () => set({ cart: [] }),

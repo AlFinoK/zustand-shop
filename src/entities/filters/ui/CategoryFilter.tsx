@@ -1,25 +1,26 @@
 import { Select } from 'antd'
+import { useFilterStore } from '../core'
 
-export const CategoryFilter = () => {
+type CategoryFilterProps = {
+	categories: string[]
+}
+
+export const CategoryFilter = ({ categories }: CategoryFilterProps) => {
+	const { setCategory } = useFilterStore()
+
+	const handleCategoryChange = (value: string) => {
+		setCategory(value)
+	}
+
 	return (
 		<Select
 			placeholder="Sort by category"
 			optionFilterProp="label"
-			onChange={() => {}}
-			options={[
-				{
-					value: 'jack',
-					label: 'Jack',
-				},
-				{
-					value: 'lucy',
-					label: 'Lucy',
-				},
-				{
-					value: 'tom',
-					label: 'Tom',
-				},
-			]}
+			onChange={handleCategoryChange}
+			options={categories.map((category) => ({
+				value: category,
+				label: category,
+			}))}
 		/>
 	)
 }

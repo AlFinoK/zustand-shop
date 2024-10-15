@@ -1,32 +1,28 @@
 import { create } from 'zustand'
 
-export type Product = {
-	id: number
-	name: string
-	category: string
-	price: number
-	image: string
+type FilterState = {
+	category: string | null
+	priceRange: [number, number] | null
+	search: string | null
+	priceSort: 'lowest' | 'highest' | null
 }
 
-type State = {
-	products: Product[]
+type FilterActions = {
+	setCategory: (category: string | null) => void
+	setPriceRange: (range: [number, number] | null) => void
+	setSearch: (search: string | null) => void
+	setPriceSort: (sort: 'lowest' | 'highest' | null) => void
+	clearFilters: () => void
 }
+export const useFilterStore = create<FilterState & FilterActions>((set) => ({
+	category: null,
+	priceRange: null,
+	search: null,
+	priceSort: null,
 
-type Actions = {
-	removeProduct: (id: number) => void
-	removeAllProducts: () => void
-	setProducts: (products: Product[]) => void
-}
-
-export const useProductStore = create<State & Actions>((set, get) => ({
-	products: [],
-
-	removeProduct: (id: number) =>
-		set(() => ({
-			products: get().products.filter((product) => product.id !== id),
-		})),
-
-	setProducts: (products) => set({ products }),
-
-	removeAllProducts: () => set({ products: [] }),
+	setCategory: (category: string | null) => set({ category }),
+	setPriceRange: (range: [number, number] | null) => set({ priceRange: range }),
+	setSearch: (search: string | null) => set({ search }),
+	setPriceSort: (sort: 'lowest' | 'highest' | null) => set({ priceSort: sort }),
+	clearFilters: () => set({ category: null, priceRange: null, search: null, priceSort: null }),
 }))

@@ -1,6 +1,7 @@
 'use client'
 
 import { Button, Layout, Spin } from 'antd'
+
 import { Sidebar } from '@/widgets/Sidebar'
 import { PaginatedList } from '@/widgets/PaginatedList'
 import { useProducts } from '@/entities/product/hooks/useProducts'
@@ -10,6 +11,8 @@ const { Content } = Layout
 
 export default function Home() {
 	const { products, error, isLoading } = useProducts()
+
+	const categories = Array.from(new Set(products.map((product) => product.category)))
 
 	if (error)
 		return (
@@ -31,17 +34,17 @@ export default function Home() {
 					<Content className={'p-10'}>
 						<div className="flex flex-col gap-5 h-full">
 							<div className={'customBg flex items-center justify-between p-5'}>
-								<span className={'text-4xl uppercase'}>Shop</span>
+								<span className={'text-4xl uppercase text-white'}>Shop</span>
 								<div className={'flex gap-3 items-center'}>
 									<PriceFilter />
-									<CategoryFilter />
+									<CategoryFilter categories={categories} />
 									<SearchFilter />
 								</div>
 							</div>
 							{isLoading ? (
 								<Spin
 									className={'m-auto'}
-									tip={'Spining...'}
+									tip={'Spinning...'}
 								/>
 							) : (
 								<PaginatedList

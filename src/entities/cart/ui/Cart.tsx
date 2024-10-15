@@ -1,8 +1,8 @@
 import { DeleteOutlined, ShoppingCartOutlined } from '@ant-design/icons'
+import { Button } from 'antd'
 
 import { useCartStore } from '../core'
 import { useCartTotal } from '../hooks/useCartTotal'
-import { Button } from 'antd'
 
 type CartProps = {
 	model: 'default' | 'full'
@@ -45,24 +45,24 @@ export const Cart = ({ model }: CartProps) => {
 		</>
 	)
 }
-
 const CartList = () => {
 	const { cart, removeFromCart } = useCartStore()
 
 	return (
 		<ul className={'flex flex-col gap-3'}>
-			{cart.map((p) => (
+			{cart.map((item) => (
 				<div
-					key={p.id}
+					key={item.product.id}
 					className={'flex items-center justify-between gap-3'}>
 					<CartItem
-						title={p.title}
-						price={p.price}
+						title={item.product.title}
+						price={item.product.price}
+						quantity={item.quantity}
 					/>
 					<Button
 						className={'bg-red-500 text-white rounded-full p-2 border-none'}
 						size={'small'}
-						onClick={() => removeFromCart(p.id)}>
+						onClick={() => removeFromCart(item.product.id)}>
 						<DeleteOutlined />
 					</Button>
 				</div>
@@ -74,13 +74,16 @@ const CartList = () => {
 type CartItemProps = {
 	title: string
 	price: number
+	quantity: number
 }
 
-const CartItem = ({ title, price }: CartItemProps) => {
+const CartItem = ({ title, price, quantity }: CartItemProps) => {
 	return (
 		<li className="flex justify-between items-center w-full">
-			<span className={'w-[250px] inline-block'}>{title}</span>
-			<span className={'text-green-400'}>${price}</span>
+			<span className={'w-[250px] inline-block'}>
+				{title} (x{quantity})
+			</span>
+			<span className={'text-green-400'}>${(price * quantity).toFixed(2)}</span>
 		</li>
 	)
 }
