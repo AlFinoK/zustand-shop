@@ -7,7 +7,6 @@ import { Product } from '@/entities/product'
 export const Card = ({ product }: { product: Product }) => {
 	const { addToCart, cart, removeFromCart } = useCartStore()
 
-	// Проверяем, находится ли товар в корзине
 	const isInCart = cart.some((cartItem) => cartItem.product.id === product.id)
 
 	return (

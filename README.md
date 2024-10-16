@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zustand Shop
 
-## Getting Started
+## Описание
 
-First, run the development server:
+Этот проект представляет собой веб-приложение, созданное с использованием следующих технологий:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **[Next.js](https://nextjs.org/)** — фреймворк для серверного рендеринга и статической генерации на React.
+- **[Zustand](https://zustand-demo.pmnd.rs/)** — легковесная библиотека для управления состоянием.
+- **[Ant Design](https://ant.design/)** — библиотека компонентов для пользовательских интерфейсов.
+- **[SWR](https://swr.vercel.app/)** —React Hook для оптимизированного извлечения данных с кэшированием.
+- **[TailwindCSS](https://tailwindcss.com/)** — утилитарный CSS-фреймворк для создания адаптивных интерфейсов.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+В проекте реализованы:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Рендеринг товаров.
+- Фильтрация товаров по категориям и ценам.
+- Пагинация для управления длинными списками продуктов.
+- Боковое меню (Sidebar) с поддержкой адаптивного дизайна.
+- Приложение адаптировано под мобильные и десктопные устройства.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Просмотр демо-версии
 
-## Learn More
+[Демо проекта на Vercel](https://zustand-market.vercel.app)
 
-To learn more about Next.js, take a look at the following resources:
+## Установка и запуск проекта
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Способ 1: Клонирование репозитория
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Клонируйте репозиторий:
 
-## Deploy on Vercel
+   ```bash
+   git clone https://github.com/AlFinoK/zustand-shop
+   cd zustand-shop
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. Установите зависимости:
+   npm install
+
+3. Запустите проект:
+   npm run dev

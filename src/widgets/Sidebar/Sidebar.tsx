@@ -1,9 +1,10 @@
 'use client'
 
 import { Button, Layout } from 'antd'
-import { Cart } from '@/entities/cart'
 import { useState, useEffect } from 'react'
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons'
+
+import { Cart } from '@/entities/cart'
 
 const { Sider } = Layout
 
@@ -35,13 +36,15 @@ export const Sidebar = () => {
 		<>
 			<Sider
 				className={`customBg ${isMobile ? 'mobileSidebar' : ''}`}
-				width={400}
+				width={isMobile ? '100%' : 400}
 				collapsedWidth={isMobile ? 0 : 80}
 				collapsible
 				reverseArrow
 				collapsed={isCollapsed}
 				onCollapse={toggleCollapse}>
-				<div className="p-4">{isCollapsed ? <Cart model={'default'} /> : <Cart model={'full'} />}</div>
+				<div className="p-4">
+					{!isMobile && isCollapsed ? <Cart model={'default'} /> : !isCollapsed && <Cart model={'full'} />}
+				</div>
 			</Sider>
 			{isMobile && (
 				<Button
