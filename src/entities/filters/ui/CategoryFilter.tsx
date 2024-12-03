@@ -14,7 +14,7 @@ export const CategoryFilter = ({ categories }: CategoryFilterProps) => {
 	}
 
 	const options = [
-		{ value: null, label: 'All' },
+		{ value: null, label: 'all' },
 		...categories.map((category) => ({
 			value: category,
 			label: category,
@@ -27,6 +27,7 @@ export const CategoryFilter = ({ categories }: CategoryFilterProps) => {
 			optionFilterProp="label"
 			onChange={handleCategoryChange}
 			options={options}
+			style={{ minWidth: 120 }}
 		/>
 	)
 }

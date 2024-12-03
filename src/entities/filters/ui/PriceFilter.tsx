@@ -15,10 +15,11 @@ export const PriceFilter = () => {
 			optionFilterProp="label"
 			onChange={handlePriceChange}
 			options={[
-				{ value: null, label: 'All' },
-				{ value: 'lowest', label: 'Lowest' },
-				{ value: 'highest', label: 'Highest' },
+				{ value: null, label: 'all' },
+				{ value: 'lowest', label: 'lowest' },
+				{ value: 'highest', label: 'highest' },
 			]}
+			style={{ minWidth: 120 }}
 		/>
 	)
 }
